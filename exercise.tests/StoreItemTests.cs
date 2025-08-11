@@ -77,25 +77,69 @@ public class StoreItemTests
     [Test]
     public void BagelEquivalentTest()
     {
-        Assert.Fail();
+        Bagel bagel1 = new Bagel("TEST", "testBagel", 0.59m);
+        Bagel bagel2 = new Bagel("TEST", "testBagel", 0.59m);
+
+        bool shouldBeTrue = bagel1.Equivalent(bagel2);
+        Assert.That(shouldBeTrue == true);
     }
 
     [Test]
     public void CoffeeEquivalentTest()
     {
-        Assert.Fail();
+        Coffee coffee1 = new Coffee("TEST", "testCoffee", 0.59m);
+        Coffee coffee2 = new Coffee("TEST", "testCoffee", 0.59m);
+
+        bool shouldBeTrue = coffee1.Equivalent(coffee2);
+        Assert.That(shouldBeTrue == true);
     }
 
     [Test]
     public void FillingEquivalentTest()
     {
-        Assert.Fail();
+        Filling filling1 = new Filling("TEST", "testFilling", 0.59m);
+        Filling filling2 = new Filling("TEST", "testFilling", 0.59m);
+
+        bool shouldBeTrue = filling1.Equivalent(filling2);
+        Assert.That(shouldBeTrue == true);
     }
 
     [Test]
     public void BagelWithFillingEquivalentTest()
     {
-        Assert.Fail();
+        {
+            Bagel bagel1 = new Bagel("TEST", "testBagel", 0.59m);
+            Bagel bagel2 = new Bagel("TEST", "testBagel", 0.59m);
+            Filling filling1 = new Filling("TEST", "testFilling", 0.59m);
+            Filling filling2 = new Filling("TEST", "testFilling", 0.59m);
+
+            bagel1.AddFilling(filling1);
+            bagel2.AddFilling(filling2);
+
+            bool fillingEquivalent = filling1.Equivalent(filling2);
+            bool shouldBeTrue = bagel1.Equivalent(bagel2);
+            Assert.That(shouldBeTrue == true && fillingEquivalent);
+        }
+    }
+
+    [Test]
+    public void BagelWithSameFillingEquivalentTest()
+    {
+        {
+            Bagel bagel1 = new Bagel("TEST", "testBagel", 0.59m);
+            Bagel bagel2 = new Bagel("TEST", "testBagel", 0.59m);
+            Filling filling1 = new Filling("TEST", "testFilling", 0.59m);
+            Filling filling2 = new Filling("TEST", "testFilling", 0.59m);
+
+            bagel1.AddFilling(filling1);
+            bagel1.AddFilling(filling2);
+
+            bagel2.AddFilling(filling1);
+            bagel2.AddFilling(filling2);
+
+            bool shouldBeTrue = bagel1.Equivalent(bagel2);
+            Assert.That(shouldBeTrue == true);
+        }
     }
 
     [Test]

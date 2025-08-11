@@ -19,6 +19,20 @@ namespace exercise.main.StoreItem
             Variant = variant;
             Price = price;
         }
+
+        public bool Equivalent(IStoreItem item)
+        {
+            return (
+                item.GetType() == this.GetType() &&
+                item.Sku == this.Sku &&
+                item.Variant == this.Variant &&
+                item.Price == this.Price);
+        }
+
+        public IStoreItem Copy()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

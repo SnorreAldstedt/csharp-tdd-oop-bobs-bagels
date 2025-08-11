@@ -44,5 +44,36 @@ namespace exercise.main.StoreItem
             }
             return totalPrice;
         }
+
+        // To keep it simple a bagel is equivalent only if it has the equivalent filling in the same order
+        // The fillings doesnt have to be the same Filling object, but be equivalent. This means that this function
+        // doesn't consider an egg and bacon bagel to be equivalent to a bacon and egg bagel
+        public bool Equivalent(Bagel item)
+        {
+
+            //HashSet<Filling> fillingSet = new HashSet<Filling>(Fillings);
+            bool sameFillings = item.Fillings.Count == Fillings.Count;
+            if (sameFillings)
+            {
+                for (int i = 0; i < Fillings.Count; i++)
+                {
+                    if (!item.Fillings[i].Equivalent(Fillings[i]))
+                    {
+                        sameFillings = false;
+                    }
+                }
+            }
+            return(
+                item.GetType() == this.GetType() &&
+                item.Sku == this.Sku &&
+                item.Variant == this.Variant &&
+                item.Price == this.Price &&
+                sameFillings);
+        }
+
+        public IStoreItem Copy()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
