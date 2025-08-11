@@ -9,38 +9,47 @@ namespace exercise.main
 {
     public class Basket
     {
-        public int ItemCount;
+        private List<IStoreItem> _storeItems = new List<IStoreItem>();
+        public int ItemCount { get { return _storeItems.Count; } }
 
-        public Basket(int v = 5)
+        public Basket(int capacity = 5)
         {
-            V = v;
+            Capacity = capacity;
         }
 
-        public int V { get; }
+        public int Capacity { get; set; }
 
-        public void Add(Bagel bagel1)
+        public void Add(IStoreItem storeItem)
         {
-            throw new NotImplementedException();
+            _storeItems.Add(storeItem);
         }
 
-        public bool BasketHas(Bagel bagel1)
+        public bool BasketHas(IStoreItem storeItem)
         {
-            throw new NotImplementedException();
+            return _storeItems.Contains(storeItem);
         }
 
         public bool IsFull()
         {
-            throw new NotImplementedException();
+            return _storeItems.Count >= Capacity;
         }
 
-        public void Remove(Bagel bagel2)
+        public void Remove(IStoreItem storeItem)
         {
-            throw new NotImplementedException();
+            if (_storeItems.Contains(storeItem)) 
+            { 
+                _storeItems.Remove(storeItem);
+            }
         }
 
         public decimal TotalCost()
         {
-            throw new NotImplementedException();
+            decimal totalPrice = 0;
+            foreach(IStoreItem storeItem in _storeItems)
+            {
+                totalPrice += storeItem.Price;
+            }
+            return totalPrice;
         }
     }
 }

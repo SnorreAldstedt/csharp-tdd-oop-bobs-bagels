@@ -11,7 +11,8 @@ namespace exercise.main.StoreItem
     {
         public string Sku { get; set; }
         public string Variant { get; set; }
-        public decimal Price { get; set; }
+        private decimal _bagelPrice { get; set; }
+        public decimal Price { get { return GetTotalPrice();} }
 
         public List<Filling> Fillings = new List<Filling>();
 
@@ -19,7 +20,7 @@ namespace exercise.main.StoreItem
         {
             Sku = sku;
             Variant = variant;
-            Price = price;
+            _bagelPrice = price;
         }
 
         public void AddFilling(Filling filling)
@@ -37,7 +38,7 @@ namespace exercise.main.StoreItem
 
         public decimal GetTotalPrice()
         {
-            decimal totalPrice = Price;
+            decimal totalPrice = _bagelPrice;
             foreach (Filling filling in Fillings) { 
                 totalPrice += filling.Price;
             }

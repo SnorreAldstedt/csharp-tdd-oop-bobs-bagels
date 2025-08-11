@@ -9,7 +9,7 @@ namespace exercise.main.StoreItem
     public interface IStoreItem
     {
         string Sku { get; set; }
-        decimal Price { get; set; }
+        decimal Price { get; }
         string Variant { get; set;  }
 
     }
