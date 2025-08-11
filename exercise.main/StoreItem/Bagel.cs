@@ -22,19 +22,26 @@ namespace exercise.main.StoreItem
             Price = price;
         }
 
-        public void AddFilling(Filling testFilling)
+        public void AddFilling(Filling filling)
         {
-            throw new NotImplementedException();
+            Fillings.Add(filling);
         }
 
-        public void RemoveFilling(Filling testFilling)
+        public void RemoveFilling(Filling filling)
         {
-            throw new NotImplementedException();
+            if (Fillings.Contains(filling))
+            {
+                Fillings.Remove(filling);
+            }
         }
 
         public decimal GetTotalPrice()
         {
-            throw new NotImplementedException();
+            decimal totalPrice = Price;
+            foreach (Filling filling in Fillings) { 
+                totalPrice += filling.Price;
+            }
+            return totalPrice;
         }
     }
 }
