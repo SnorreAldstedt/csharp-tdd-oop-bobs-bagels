@@ -84,4 +84,4 @@ I want customers to only be able to order things that we stock in our inventory.
 | IStoreItem | Interface with methods for products | Interface for bagel, filling and coffee |  |
 | IStoreItem | Price | attribute that has the price of an IStoreItem | int |
 | Store | GetInventory() | function that returns the inventory of the store | List<IStoreItem> |
-
+| IStoreItem | Copy() | function to copy a storeItem, makes it easier to choose a bagel/coffee/filling from a menu | IStoreItem |
