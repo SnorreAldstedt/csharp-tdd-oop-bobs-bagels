@@ -27,6 +27,11 @@ namespace exercise.main.StoreItem
             throw new NotImplementedException();
         }
 
+        public void RemoveFilling(Filling testFilling)
+        {
+            throw new NotImplementedException();
+        }
+
         public decimal GetTotalPrice()
         {
             throw new NotImplementedException();

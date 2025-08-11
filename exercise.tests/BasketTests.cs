@@ -24,6 +24,7 @@ public class BasketTests
         Bagel bagel = new Bagel("TEST", "testBagel", 0.59m);
         Filling filling = new Filling("FILL", "testFill", 0.15m);
         Basket basket = new Basket();
+
         bagel.AddFilling(filling);
         basket.Add(bagel);
 
