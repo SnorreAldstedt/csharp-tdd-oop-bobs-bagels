@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace exercise.main.StoreItem
 {
-    internal class Coffee
+    public class Coffee : IStoreItem
+
     {
+        public string Sku { get; set; }
+        public string Variant { get; set; }
+        public decimal Price { get; set; }
+
+        public Coffee(string sku, string variant, decimal price)
+        {
+            Sku = sku;
+            Variant = variant;
+            Price = price;
+        }
     }
 }

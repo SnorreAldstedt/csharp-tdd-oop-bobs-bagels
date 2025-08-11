@@ -1,6 +1,6 @@
 ﻿namespace exercise.tests;
 
-public class NUnitTestItem1
+public class StoreTests
 {
     [SetUp]
     public void Setup()
@@ -10,6 +10,6 @@ public class NUnitTestItem1
     [Test]
     public void Test1()
     {
-        Assert.Pass();
+        Assert.Fail();
     }
 }

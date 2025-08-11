@@ -1,15 +1,58 @@
-﻿namespace exercise.tests;
+﻿using exercise.main.StoreItem;
 
-public class NUnitTestItem1
+namespace exercise.tests;
+public class StoreItemTests
 {
-    [SetUp]
-    public void Setup()
+
+    [Test]
+    public void FillingTest()
     {
+        Filling testFilling = new Filling("TEST", "testFilling", 1.99m);
+        Decimal expectedPrice = 1.99m;
+        string expectedSku = "TEST";
+        string expectedVariant = "testFilling";
+        Assert.That(
+            testFilling.Sku == expectedSku && 
+            testFilling.Variant == expectedVariant && 
+            testFilling.Price == expectedPrice);
     }
 
     [Test]
-    public void Test1()
+    public void CoffeeTest()
     {
-        Assert.Pass();
+        Coffee testCoffee = new Coffee("TEST", "testCoffee", 1.95m);
+        Decimal expectedPrice = 1.59m;
+        string expectedSku = "TEST";
+        string expectedVariant = "testCoffee";
+        Assert.That(
+            testCoffee.Sku == expectedSku &&
+            testCoffee.Variant == expectedVariant &&
+            testCoffee.Price == expectedPrice);
+    }
+    [Test]
+    public void BagelTest()
+    {
+        Bagel testBagel = new Bagel("TEST", "testBagel", 0.59m);
+        Decimal expectedPrice = 0.59m;
+        string expectedSku = "TEST";
+        string expectedVariant = "testBagel";
+        Assert.That(
+            testBagel.Sku == expectedSku &&
+            testBagel.Variant == expectedVariant &&
+            testBagel.Price == expectedPrice);
+    }
+   
+    [Test]
+    public void BagelFillingTest()
+    {
+        Bagel testBagel = new Bagel("TEST", "testBagel", 0.59m);
+        Filling testFilling = new Filling("TEST", "testFilling", 0.11m);
+
+        testBagel.AddFilling(testFilling);
+
+        Decimal expectedPrice = 0.70m;
+        Decimal bagelPrice = testBagel.GetTotalPrice();
+
+        Assert.That(bagelPrice == expectedPrice && testBagel.Fillings.Contains(testFilling));
     }
 }
