@@ -4,7 +4,7 @@ using System.Reflection.Emit;
 
 namespace exercise.tests;
 
-public class Tests
+public class BasketTests
 {
     [Test]
     public void AddTwoBagelTest()
