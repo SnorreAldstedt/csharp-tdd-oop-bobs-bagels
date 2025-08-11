@@ -12,5 +12,8 @@ namespace exercise.main.StoreItem
         decimal Price { get; }
         string Variant { get; set;  }
 
+        bool Equivalent(IStoreItem item);
+
+        IStoreItem Copy();
     }
 }

@@ -85,3 +85,5 @@ I want customers to only be able to order things that we stock in our inventory.
 | IStoreItem | Price | attribute that has the price of an IStoreItem | int |
 | Store | GetInventory() | function that returns the inventory of the store | List<IStoreItem> |
 | IStoreItem | Copy() | function to copy a storeItem, makes it easier to choose a bagel/coffee/filling from a menu | IStoreItem |
+| IStoreItem | Equivalent(IstoreItem item) | Checks wheter an item is equivalent to the instance it's called on| bool |
+

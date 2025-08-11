@@ -73,4 +73,49 @@ public class StoreItemTests
 
         Assert.That(bagelPrice == expectedPrice && testBagel.Fillings.Contains(testFilling2) && !testBagel.Fillings.Contains(testFilling1));
     }
+
+    [Test]
+    public void BagelEquivalentTest()
+    {
+        Assert.Fail();
+    }
+
+    [Test]
+    public void CoffeeEquivalentTest()
+    {
+        Assert.Fail();
+    }
+
+    [Test]
+    public void FillingEquivalentTest()
+    {
+        Assert.Fail();
+    }
+
+    [Test]
+    public void BagelWithFillingEquivalentTest()
+    {
+        Assert.Fail();
+    }
+
+    [Test]
+    public void CopyBagelTest()
+    {
+        Assert.Fail();
+    }
+    [Test]
+    public void CopyCoffeeTest()
+    {
+        Assert.Fail();
+    }
+    [Test]
+    public void CopyFillingTest()
+    {
+        Assert.Fail();
+    }
+    [Test]
+    public void CopyBagelWithFillingTest()
+    {
+        Assert.Fail();
+    }
 }
