@@ -145,21 +145,46 @@ public class StoreItemTests
     [Test]
     public void CopyBagelTest()
     {
-        Assert.Fail();
+        Bagel bagel = new Bagel("TEST", "testBagel", 0.59m);
+        Bagel copyBagel = (Bagel)bagel.Copy();
+
+        Assert.That(bagel != copyBagel && bagel.Equivalent(copyBagel));
+    }
+    [Test]
+    public void CopyBagelNotEquivalentTest()
+    {
+        Bagel bagel = new Bagel("TEST", "testBagel", 0.59m);
+        Bagel copyBagel = (Bagel)bagel.Copy();
+        Filling filling = new Filling("TEST", "testFilling", 0.59m);
+        bagel.AddFilling(filling);
+
+
+        Assert.That(bagel != copyBagel && !bagel.Equivalent(copyBagel));
     }
     [Test]
     public void CopyCoffeeTest()
     {
-        Assert.Fail();
+        Coffee coffee = new Coffee("TEST", "testCoffee", 0.59m);
+        Coffee copyCoffee = (Coffee)coffee.Copy();
+
+        Assert.That(coffee != copyCoffee && coffee.Equivalent(copyCoffee));
     }
     [Test]
     public void CopyFillingTest()
     {
-        Assert.Fail();
+        Filling filling = new Filling("TEST", "testFilling", 0.59m);
+        Filling copyFilling = (Filling)filling.Copy();
+
+        Assert.That(filling != copyFilling && filling.Equivalent(copyFilling));
     }
     [Test]
     public void CopyBagelWithFillingTest()
     {
-        Assert.Fail();
+        Bagel bagel = new Bagel("TEST", "testBagel", 0.59m);
+        Filling filling = new Filling("TEST", "testFilling", 0.59m);
+        bagel.AddFilling(filling);
+        Bagel copyBagel = (Bagel)bagel.Copy();
+
+        Assert.That(bagel != copyBagel && bagel.Equivalent(copyBagel));
     }
 }

@@ -73,7 +73,14 @@ namespace exercise.main.StoreItem
 
         public IStoreItem Copy()
         {
-            throw new NotImplementedException();
+            Bagel copyBagel = new Bagel(Sku, Variant, _bagelPrice);
+            List<Filling> copyFillings = new List<Filling>();
+            foreach (Filling filling in Fillings) 
+            {
+                Filling copyFilling = (Filling)filling.Copy();
+                copyBagel.AddFilling(copyFilling); 
+            }
+            return copyBagel;
         }
     }
 }

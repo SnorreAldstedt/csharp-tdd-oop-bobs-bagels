@@ -31,7 +31,7 @@ namespace exercise.main.StoreItem
 
         public IStoreItem Copy()
         {
-            throw new NotImplementedException();
+            return new Filling(Sku, Variant, Price);
         }
     }
 }
