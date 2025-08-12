@@ -86,9 +86,18 @@ I want customers to only be able to order things that we stock in our inventory.
 | Store | GetInventory() | function that returns the inventory of the store | List<IStoreItem> |
 | IStoreItem | Copy() | function to copy a storeItem, makes it easier to choose a bagel/coffee/filling from a menu | IStoreItem |
 | IStoreItem | Equivalent(IstoreItem item) | Checks wheter an item is equivalent to the instance it's called on| bool |
+| Inventory | SKU | Attribute that has the Sku of an Inventory instance | string |
+| Inventory | Price | Attribute that has the Price of an Inventory instance | decimal |
+| Inventory | Name | Attribute that has the Name of an Inventory instance | string |
+| Inventory | Variant | Attribute that has the Variant of an Inventory instance | string |
 | Store | MaxCapacity | Attribute that should be handed over when creatiing a basket at the store | int |
 | Store | Name | Attribute that holds the name of the store | string |
-| Store | Inventory | List of all Items available | List<IStoreItem> |
+| Store | InventoryList | List of all Items available | List<Inventory> |
 | Store | StoreHasItem(IStoreItem item) | Method that checks if the Item exists in Inventory | bool |
 | Basket | ClearBasket() | Removes all items from basket | void |
+| Store | CreateBagel(Inventory inventoryItem) | Creates a bagel from inventory | Bagel |
+| Store | CreateCoffee(Inventory inventoryItem) | Creates a coffee from inventory | Coffee |
+| Store | CreateFilling(Inventory inventoryItem) | Creates a filling from inventory | Filling |
+| Store | AddFillToBagel(Bagel bagel, Filling fill) | Adds a filling to a bagel | void |
+
 
