@@ -12,7 +12,7 @@ namespace exercise.main
         private List<IStoreItem> _storeItems = new List<IStoreItem>();
         public int ItemCount { get { return _storeItems.Count; } }
 
-        public Basket(int capacity = 5)
+        public Basket(int capacity = 20)
         {
             Capacity = capacity;
         }
@@ -52,6 +52,11 @@ namespace exercise.main
                 totalPrice += storeItem.Price;
             }
             return totalPrice;
+        }
+
+        public void ClearBasket()
+        {
+            throw new NotImplementedException();
         }
     }
 }

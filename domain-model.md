@@ -78,7 +78,6 @@ I want customers to only be able to order things that we stock in our inventory.
 | Basket | BasketHas(IStoreItem item) | Checks if basket has item | bool |
 | Basket | Remove(StoreItem item) | Removes item from basket if the basket has that item | void |
 | Basket | TotalCost() | Returns total cost of Basket | int | 
-| Store | Price(IStoreItem item) | Returns price of Item | int | <!-- This method is relevant for both user story 9 and 7 -->
 | Bagel | AddFillings(Filling filling)  | Add filling to bagel | void |
 | Bagel | GetTotalPrice()  | Get total cost of bagel including fillings | Decimal |
 | IStoreItem | Interface with methods for products | Interface for bagel, filling and coffee |  |
@@ -95,9 +94,10 @@ I want customers to only be able to order things that we stock in our inventory.
 | Store | InventoryList | List of all Items available | List<Inventory> |
 | Store | StoreHasItem(IStoreItem item) | Method that checks if the Item exists in Inventory | bool |
 | Basket | ClearBasket() | Removes all items from basket | void |
-| Store | CreateBagel(Inventory inventoryItem) | Creates a bagel from inventory | Bagel |
-| Store | CreateCoffee(Inventory inventoryItem) | Creates a coffee from inventory | Coffee |
-| Store | CreateFilling(Inventory inventoryItem) | Creates a filling from inventory | Filling |
+| Store | CreateBagel(string sku) | Creates a bagel from inventory | Bagel |
+| Store | CreateCoffee(string sku) | Creates a coffee from inventory | Coffee |
+| Store | CreateFilling(string sku) | Creates a filling from inventory | Filling |
+| Store | CreateNewBasket() | Creates a new basket with max capacity from the store | Basket |
 | Store | AddFillToBagel(Bagel bagel, Filling fill) | Adds a filling to a bagel | void |
 
 

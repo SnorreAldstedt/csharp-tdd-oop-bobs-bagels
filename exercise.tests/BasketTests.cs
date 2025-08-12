@@ -102,4 +102,21 @@ public class BasketTests
         Decimal actualPrice = basket.TotalCost();
         Assert.That(expectedPrice == actualPrice);
     }
+    [Test]
+    public void BasketClearTest()
+    {
+        Bagel bagel1 = new Bagel("TEST1", "testBagel1", 0.59m);
+        Bagel bagel2 = new Bagel("TEST2", "testBagel2", 0.59m);
+        Bagel bagel3 = new Bagel("TEST3", "testBagel3", 0.59m);
+
+        Basket basket = new Basket(3);
+        basket.Add(bagel1);
+        basket.Add(bagel2);
+        basket.Add(bagel3);
+        bool isFullBeforeClear = basket.IsFull();
+        basket.ClearBasket();
+        int ItemsInBasket = basket.ItemCount;
+        Assert.That(isFullBeforeClear && ItemsInBasket == 0);
+    }
+
 }
