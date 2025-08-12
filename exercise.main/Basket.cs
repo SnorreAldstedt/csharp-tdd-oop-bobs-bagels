@@ -42,6 +42,8 @@ namespace exercise.main
             }
         }
 
+
+
         public decimal TotalCost()
         {
             decimal totalPrice = 0;

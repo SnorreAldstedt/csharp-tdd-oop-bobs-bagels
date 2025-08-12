@@ -86,4 +86,9 @@ I want customers to only be able to order things that we stock in our inventory.
 | Store | GetInventory() | function that returns the inventory of the store | List<IStoreItem> |
 | IStoreItem | Copy() | function to copy a storeItem, makes it easier to choose a bagel/coffee/filling from a menu | IStoreItem |
 | IStoreItem | Equivalent(IstoreItem item) | Checks wheter an item is equivalent to the instance it's called on| bool |
+| Store | MaxCapacity | Attribute that should be handed over when creatiing a basket at the store | int |
+| Store | Name | Attribute that holds the name of the store | string |
+| Store | Inventory | List of all Items available | List<IStoreItem> |
+| Store | StoreHasItem(IStoreItem item) | Method that checks if the Item exists in Inventory | bool |
+| Basket | ClearBasket() | Removes all items from basket | void |
 
