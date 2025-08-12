@@ -51,7 +51,6 @@ namespace exercise.main.StoreItem
         public bool Equivalent(Bagel item)
         {
 
-            //HashSet<Filling> fillingSet = new HashSet<Filling>(Fillings);
             bool sameFillings = item.Fillings.Count == Fillings.Count;
             if (sameFillings)
             {
