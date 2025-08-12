@@ -14,50 +14,86 @@ namespace exercise.main
         {
             Name = name;
             MaxCapacity = cap;
+            InventoryDict = new Dictionary<string, Inventory>();
         }
 
         public string Name { get; set; }
         public int MaxCapacity { get; set; }
         public Dictionary<string, Inventory> InventoryDict { get; set;}
 
-        public void AddFillToBagel(Bagel bagel, Filling fill)
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddInventory(Inventory invItem)
         {
-            throw new NotImplementedException();
+            InventoryDict[invItem.Sku] = invItem;
         }
 
         public void AddItemToBasket(Bagel bagel, Basket basket)
         {
-            throw new NotImplementedException();
+            basket.Add(bagel);
         }
 
-        public Bagel CreateBagel(string v)
+        public Bagel CreateBagel(string sku)
         {
-            throw new NotImplementedException();
+            Inventory invItem = InventoryDict[sku];
+            if (invItem.Name == "Bagel")
+            {
+                return new Bagel(sku, invItem.Variant, invItem.Price);
+            }
+            else {
+                throw new Exception("Sku doesn't exist or isn't a Bagel");
+            }
+            
+        }
+
+        public Coffee CreateCoffee(string sku)
+        {
+            Inventory invItem = InventoryDict[sku];
+            if (invItem.Name == "Coffee")
+            {
+                return new Coffee(sku, invItem.Variant, invItem.Price);
+            }
+            else
+            {
+                throw new Exception("Sku doesn't exist or isn't a Coffee");
+            }
+
+        }
+
+
+        public Filling CreateFilling(string sku)
+        {
+            Inventory invItem = InventoryDict[sku];
+            if (invItem.Name == "Filling")
+            {
+                return new Filling(sku, invItem.Variant, invItem.Price);
+            }
+            else
+            {
+                throw new Exception("Sku doesn't exist or isn't a Filling");
+            }
+
+        }
+
+
+        public bool StoreHasItem(IStoreItem storeItem)
+        {
+            //bool hasItem = true;
+            string sku = storeItem.Sku;
+            if (InventoryDict.ContainsKey(sku))
+            {
+                Inventory invItem = InventoryDict[sku];
+                return (storeItem.Price == invItem.Price && storeItem.Variant == invItem.Variant);
+            }
+            return false;
         }
 
         public Basket CreateBasket()
         {
-            throw new NotImplementedException();
+            return new Basket(MaxCapacity);
         }
 
-        public Coffee CreateCoffee(string v)
+        public void AddFillToBagel(Bagel bagel, Filling fill)
         {
-            throw new NotImplementedException();
-        }
-
-        public Filling CreateFilling(string v)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool StoreHasItem(IStoreItem storeItem)
-        {
-            throw new NotImplementedException();
+            bagel.AddFilling(fill);
         }
     }
 }

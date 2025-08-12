@@ -56,7 +56,7 @@ namespace exercise.main
 
         public void ClearBasket()
         {
-            throw new NotImplementedException();
+            _storeItems.Clear();
         }
     }
 }

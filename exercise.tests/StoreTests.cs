@@ -59,18 +59,18 @@ public class StoreTests
         testStore.AddInventory(InvItemC);
         Coffee coffee = testStore.CreateCoffee("TEST");
 
-        Assert.That(coffee.Sku == "TEST" && coffee.Price == 0.50m && coffee.Variant == "testBagel");
+        Assert.That(coffee.Sku == "TEST" && coffee.Price == 0.50m && coffee.Variant == "testCoffee");
     }
 
     [Test]
     public void CreateFillingTest()
     {
         Store testStore = new Store("testStore", 50);
-        Inventory InvItemF = new Inventory("TEST", 0.50m, "Filling", "testCoffee");
+        Inventory InvItemF = new Inventory("TEST", 0.50m, "Filling", "testFilling");
         testStore.AddInventory(InvItemF);
         Filling filling = testStore.CreateFilling("TEST");
 
-        Assert.That(filling.Sku == "TEST" && filling.Price == 0.50m && filling.Variant == "testBagel");
+        Assert.That(filling.Sku == "TEST" && filling.Price == 0.50m && filling.Variant == "testFilling");
     }
 
     [Test]
@@ -93,10 +93,10 @@ public class StoreTests
         testStore.AddInventory(InvItemF);
 
         Bagel bagel = testStore.CreateBagel("TEST");
-        Filling fill = testStore.CreateFilling("TEST");
+        Filling fill = testStore.CreateFilling("FILL");
         testStore.AddFillToBagel(bagel, fill);
         
-        Assert.That(bagel.Sku == "TEST" && bagel.Price == 0.80m && bagel.Variant == "testBagel" && bagel.Fillings.Contains(fill));
+        Assert.That(bagel.Sku == "TEST" && bagel.Price == 0.89m && bagel.Variant == "testBagel" && bagel.Fillings.Contains(fill));
     }
         [Test]
     public void AddItemToBasketTest()
@@ -110,7 +110,7 @@ public class StoreTests
         testStore.AddInventory(InvItemF);
 
         Bagel bagel = testStore.CreateBagel("TEST");
-        Filling fill = testStore.CreateFilling("TEST");
+        Filling fill = testStore.CreateFilling("FILL");
         testStore.AddFillToBagel(bagel, fill);
 
         testStore.AddItemToBasket(bagel, basket);
