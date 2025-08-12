@@ -26,9 +26,9 @@ namespace exercise.main
             InventoryDict[invItem.Sku] = invItem;
         }
 
-        public void AddItemToBasket(Bagel bagel, Basket basket)
+        public void AddItemToBasket(IStoreItem item, Basket basket)
         {
-            basket.Add(bagel);
+            basket.Add(item);
         }
 
         public Bagel CreateBagel(string sku)

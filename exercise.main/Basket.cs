@@ -9,8 +9,8 @@ namespace exercise.main
 {
     public class Basket
     {
-        private List<IStoreItem> _storeItems = new List<IStoreItem>();
-        public int ItemCount { get { return _storeItems.Count; } }
+        public List<IStoreItem> storeItems = new List<IStoreItem>();
+        public int ItemCount { get { return storeItems.Count; } }
 
         public Basket(int capacity = 20)
         {
@@ -21,33 +21,41 @@ namespace exercise.main
 
         public void Add(IStoreItem storeItem)
         {
-            _storeItems.Add(storeItem);
+            storeItems.Add(storeItem);
         }
 
         public bool BasketHas(IStoreItem storeItem)
         {
-            return _storeItems.Contains(storeItem);
+            return storeItems.Contains(storeItem);
         }
 
         public bool IsFull()
         {
-            return _storeItems.Count >= Capacity;
+            return storeItems.Count >= Capacity;
         }
 
         public void Remove(IStoreItem storeItem)
         {
-            if (_storeItems.Contains(storeItem)) 
+            if (storeItems.Contains(storeItem)) 
             { 
-                _storeItems.Remove(storeItem);
+                storeItems.Remove(storeItem);
             }
         }
 
-
+        public int CountOccurences(string sku)
+        {
+            int count = 0;
+            foreach(IStoreItem item in storeItems)
+            {
+                if (item.Sku == sku) count++;
+            }
+            return count;
+        }
 
         public decimal TotalCost()
         {
             decimal totalPrice = 0;
-            foreach(IStoreItem storeItem in _storeItems)
+            foreach(IStoreItem storeItem in storeItems)
             {
                 totalPrice += storeItem.Price;
             }
@@ -56,7 +64,7 @@ namespace exercise.main
 
         public void ClearBasket()
         {
-            _storeItems.Clear();
+            storeItems.Clear();
         }
     }
 }
