@@ -50,9 +50,9 @@ namespace exercise.main
             dateTime = DateTime.Now;
             StringBuilder receipt = new StringBuilder();
             string name = _checkout.Store.Name;
-            receipt.AppendLine("       ---- "+name+" ----       ");
+            receipt.AppendLine("     ---- "+name+" ----       ");
             receipt.AppendLine();
-            int dateTimePadding = (int)Math.Ceiling((double)(40 - dateTime.ToString().Length) / 2);
+            int dateTimePadding = (int)Math.Ceiling((double)(36 - dateTime.ToString().Length) / 2);
             receipt.Append(' ', dateTimePadding);
             receipt.Append(dateTime);
             receipt.Append(' ', dateTimePadding);
@@ -77,17 +77,26 @@ namespace exercise.main
                     alreadyAdded.Add(item.Sku);
                 }
             }
+
             receipt.Append('-', 40);
             receipt.AppendLine();
-            receipt.Append("Total");
-            receipt.Append(' ', 40 - (7 + _checkout.originalCost.ToString().Length));
+            receipt.Append(' ', 38 - (_checkout.originalCost.ToString().Length));
             receipt.Append(_checkout.originalCost.ToString());
+            receipt.AppendLine();
+            receipt.Append("Discount:");
+            receipt.Append(' ', 26 - (_checkout.discountTotal.ToString().Length));
+            receipt.Append(" - "+_checkout.discountTotal.ToString());
+            receipt.AppendLine();
+            receipt.AppendLine();
+            receipt.Append("Total");
+            receipt.Append(' ', 33-(_checkout.discountCost.ToString().Length));
+            receipt.Append(_checkout.discountCost.ToString());
             receipt.AppendLine();
             receipt.Append('-', 40);
             receipt.AppendLine();
 
             string thanks = "Thank you for your order!";
-            receipt.AppendLine("         "+thanks);
+            receipt.AppendLine("      "+thanks);
 
             return receipt.ToString();
         }
