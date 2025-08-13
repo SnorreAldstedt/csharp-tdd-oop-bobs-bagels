@@ -9,36 +9,36 @@ namespace exercise.main
 {
     public class BasketCheckout
     {
-        private Basket _basket;
-        private decimal _originalCost;
-        private decimal _discountCost;
-        public decimal discountTotal{ get { return _originalCost - _discountCost; } }
+        public Basket basket;
+        public decimal originalCost;
+        public decimal discountCost;
+        public decimal discountTotal{ get { return originalCost - discountCost; } }
         public Store Store { get; set; }
 
-        public BasketCheckout(Basket basket, Store store)
+        public BasketCheckout(Basket b, Store store)
         {
-            _basket = basket;
-            _originalCost = _basket.TotalCost();
+            basket = b;
+            originalCost = basket.TotalCost();
             Store = store;
         }
 
         private bool hasTwelveOfSameBagel(string sku)
         {
             bool isBagel = Store.InventoryDict[sku].Name == "Bagel";
-            int occurences = _basket.CountOccurences(sku);
+            int occurences = basket.CountOccurences(sku);
             return (isBagel && occurences >= 12);
         }
         private bool hasSixOfSameBagel(string sku)
         {
             bool isBagel = Store.InventoryDict[sku].Name == "Bagel";
-            int occurences = _basket.CountOccurences(sku);
+            int occurences = basket.CountOccurences(sku);
             return (isBagel && occurences >= 6);
         }
 
         private bool hasCoffeeAndBagel()
         {
-            bool hasBagel = _basket.storeItems.Any(i => Store.InventoryDict.ContainsKey(i.Sku) && Store.InventoryDict[i.Sku].Name == "Bagel");
-            bool hasCoffee = _basket.storeItems.Any(i => Store.InventoryDict.ContainsKey(i.Sku) && Store.InventoryDict[i.Sku].Name == "Coffee");
+            bool hasBagel = basket.storeItems.Any(i => Store.InventoryDict.ContainsKey(i.Sku) && Store.InventoryDict[i.Sku].Name == "Bagel");
+            bool hasCoffee = basket.storeItems.Any(i => Store.InventoryDict.ContainsKey(i.Sku) && Store.InventoryDict[i.Sku].Name == "Coffee");
 
             return (hasBagel && hasCoffee);
         }
@@ -48,13 +48,13 @@ namespace exercise.main
         
         public List<IStoreItem> coffeeSorted()
         {
-            List<IStoreItem> onlyCoffee = _basket.storeItems.FindAll(i => Store.InventoryDict[i.Sku].Name == "Coffee");
+            List<IStoreItem> onlyCoffee = basket.storeItems.FindAll(i => Store.InventoryDict[i.Sku].Name == "Coffee");
             List<IStoreItem> coffeeSorted = onlyCoffee.OrderByDescending(i => i.Price).ToList();
             return coffeeSorted;
         }
         public List<IStoreItem> bagelSorted()
         {
-            List<IStoreItem> onlyBagel = _basket.storeItems.FindAll(i => Store.InventoryDict[i.Sku].Name == "Bagel");
+            List<IStoreItem> onlyBagel = basket.storeItems.FindAll(i => Store.InventoryDict[i.Sku].Name == "Bagel");
             List<IStoreItem> bagelSorted = onlyBagel.OrderByDescending(i => i.Price).ToList();
             return bagelSorted;
         }
@@ -112,7 +112,7 @@ namespace exercise.main
             {
                 maxDiscount = bagelDiscount;
             }
-            _discountCost = _originalCost - maxDiscount;
+            discountCost = originalCost - maxDiscount;
         }
     }
 }
