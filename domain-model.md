@@ -100,4 +100,16 @@ I want customers to only be able to order things that we stock in our inventory.
 | Store | CreateNewBasket() | Creates a new basket with max capacity from the store | Basket |
 | Store | AddFillToBagel(Bagel bagel, Filling fill) | Adds a filling to a bagel | void |
 
+## Extension 
 
+### Discounts
+- I want to be able to get discounts when buying large amounts of bagels
+- I want to have a breakfast deal with a coffee and a bagel
+
+| BasketCheckout | ApplyDiscount() | Method that applies discount on the basket | void |
+| BasketCheckout | CalculateDiscount() | Mrthod that calculates and returns Discount | int |
+
+### Receipts
+
+- As a customer I want to get an receipt to be able to verify that my order is correct
+- As an employee at Bob's Bagels I want to assure the customer that they got the right order
